@@ -18,7 +18,7 @@ COPY ./ /build/
 # build deegree, extract it and clean up
 RUN apt-get update && apt-get install -y --no-install-recommends default-jdk maven && \
   cd /build/ && \
-  mvn install -DskipTests && \
+  mvn clean install -DskipTests && \
   cp /build/deegree-services/deegree-webservices/target/deegree-webservices-*.war /usr/local/tomcat/webapps/ROOT.war && \
   cd / && \
   mkdir /usr/local/tomcat/webapps/ROOT && \
