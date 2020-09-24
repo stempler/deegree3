@@ -1,4 +1,4 @@
-FROM java:8-jdk as builder
+FROM openjdk:8-jdk-stretch as builder
 # Multi stage build - https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 
 # install maven
@@ -20,10 +20,9 @@ ENV LANG en_US.UTF-8
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
-LABEL org.label-schema.build-date=$BUILD_DATE \
-  org.label-schema.vcs-url=$VCS_URL \
-  org.label-schema.vcs-ref=$VCS_REF \
-  org.label-schema.schema-version="1.0.0-rc1"
+LABEL org.opencontainers.image.created=$BUILD_DATE \
+  org.opencontainers.image.source=$VCS_URL \
+  org.opencontainers.image.revision=$VCS_REF
 
 EXPOSE 8080
 
